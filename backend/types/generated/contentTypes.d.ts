@@ -551,12 +551,56 @@ export interface ApiNavNav extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPostPost extends Struct.CollectionTypeSchema {
-  collectionName: "posts";
+export interface ApiSecvicesCardSecvicesCard extends Struct.CollectionTypeSchema {
+  collectionName: "secvices_cards";
   info: {
-    displayName: "Post";
-    pluralName: "posts";
-    singularName: "post";
+    displayName: "SecvicesCard";
+    pluralName: "secvices-cards";
+    singularName: "secvices-card";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+    description: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Schema.Attribute.Media<"images"> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::secvices-card.secvices-card">;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSecvicesSectionSecvicesSection extends Struct.SingleTypeSchema {
+  collectionName: "secvices_sections";
+  info: {
+    displayName: "SecvicesSection";
+    pluralName: "secvices-sections";
+    singularName: "secvices-section";
   };
   options: {
     draftAndPublish: true;
@@ -570,7 +614,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
     locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<"oneToMany", "api::post.post">;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::secvices-section.secvices-section">;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -997,7 +1041,8 @@ declare module "@strapi/strapi" {
       "api::about-section.about-section": ApiAboutSectionAboutSection;
       "api::hero-section.hero-section": ApiHeroSectionHeroSection;
       "api::nav.nav": ApiNavNav;
-      "api::post.post": ApiPostPost;
+      "api::secvices-card.secvices-card": ApiSecvicesCardSecvicesCard;
+      "api::secvices-section.secvices-section": ApiSecvicesSectionSecvicesSection;
       "plugin::content-releases.release": PluginContentReleasesRelease;
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;
       "plugin::i18n.locale": PluginI18NLocale;

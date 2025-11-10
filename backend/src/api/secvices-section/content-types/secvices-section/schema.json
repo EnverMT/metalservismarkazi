@@ -1,10 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "posts",
+  "kind": "singleType",
+  "collectionName": "secvices_sections",
   "info": {
-    "singularName": "post",
-    "pluralName": "posts",
-    "displayName": "Post"
+    "singularName": "secvices-section",
+    "pluralName": "secvices-sections",
+    "displayName": "SecvicesSection"
   },
   "options": {
     "draftAndPublish": true
