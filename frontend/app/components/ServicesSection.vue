@@ -9,12 +9,7 @@
             v-if="service?.image?.formats?.thumbnail"
             class="services__image"
             :style="{ backgroundImage: `url(${apiEndpoint}${service?.image?.formats?.thumbnail?.url})` }"
-          />
-          <div
-            v-else
-            class="services__image"
-            :style="{ backgroundImage: `url(${apiEndpoint}${service?.image?.formats?.small?.url})` }"
-          />
+          />          
           <div class="services__body">
             <h3>{{ service.title }}</h3>
             <p>{{ service.description }}</p>
