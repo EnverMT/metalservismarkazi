@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "machine_sections",
+  "info": {
+    "singularName": "machine-section",
+    "pluralName": "machine-sections",
+    "displayName": "MachineSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

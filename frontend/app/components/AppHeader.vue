@@ -82,7 +82,8 @@ import strapi from "~/utils/strapi";
 
 const locales = [
   { code: "ru", label: "РУ" },
-  { code: "uz-Cyrl", label: "ЎЗ" },
+  { code: "uz-Cyrl", label: "UZ" },
+  { code: "uz", label: "УЗ" },
 ];
 const currentLocale = useState<string>("locale");
 

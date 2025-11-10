@@ -457,6 +457,76 @@ export interface ApiAboutSectionAboutSection extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCapacityCardCapacityCard extends Struct.CollectionTypeSchema {
+  collectionName: "capacity_cards";
+  info: {
+    displayName: "CapacityCard";
+    pluralName: "capacity-cards";
+    singularName: "capacity-card";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::capacity-card.capacity-card">;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+    value: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+  };
+}
+
+export interface ApiCapacitySectionCapacitySection extends Struct.SingleTypeSchema {
+  collectionName: "capacity_sections";
+  info: {
+    displayName: "CapacitySection";
+    pluralName: "capacity-sections";
+    singularName: "capacity-section";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::capacity-section.capacity-section">;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
   collectionName: "hero_sections";
   info: {
@@ -502,6 +572,76 @@ export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMachineCardMachineCard extends Struct.CollectionTypeSchema {
+  collectionName: "machine_cards";
+  info: {
+    displayName: "MachineCard";
+    pluralName: "machine-cards";
+    singularName: "machine-card";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+    image: Schema.Attribute.Media<"images"> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::machine-card.machine-card">;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMachineSectionMachineSection extends Struct.SingleTypeSchema {
+  collectionName: "machine_sections";
+  info: {
+    displayName: "MachineSection";
+    pluralName: "machine-sections";
+    singularName: "machine-section";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::machine-section.machine-section">;
+    publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1109,7 +1249,11 @@ declare module "@strapi/strapi" {
       "admin::user": AdminUser;
       "api::about-card.about-card": ApiAboutCardAboutCard;
       "api::about-section.about-section": ApiAboutSectionAboutSection;
+      "api::capacity-card.capacity-card": ApiCapacityCardCapacityCard;
+      "api::capacity-section.capacity-section": ApiCapacitySectionCapacitySection;
       "api::hero-section.hero-section": ApiHeroSectionHeroSection;
+      "api::machine-card.machine-card": ApiMachineCardMachineCard;
+      "api::machine-section.machine-section": ApiMachineSectionMachineSection;
       "api::nav.nav": ApiNavNav;
       "api::service-section.service-section": ApiServiceSectionServiceSection;
       "api::services-card.services-card": ApiServicesCardServicesCard;
