@@ -1,24 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-const apiEndpointAddress = "http://localhost:1337";
+const api_url = process.env.NUXT_API_URL
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },  
+  compatibilityDate: "2025-07-15",
+  devtools: { enabled: true },
   ssr: false,
 
   runtimeConfig: {
-    public: { apiEndpoint: apiEndpointAddress },
+    public: { apiEndpoint: api_url || "http://localhost:1337" },
   },
 
-  css: [
-    '~/assets/css/main.css'
-  ],
+  css: ["~/assets/css/main.css"],
 
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/fonts',
-    '@nuxt/icon',
-    '@nuxt/image'
-  ]
-})
+  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/icon", "@nuxt/image"],
+});

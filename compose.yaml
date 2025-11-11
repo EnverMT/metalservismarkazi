@@ -6,12 +6,14 @@ services:
       context: frontend
       dockerfile: Dockerfile
     restart: always
+    env_file:
+      - .env
     ports:
-      - "3000:3000"
+      - "${NUXT_PORT}:3000"
     environment:
-      - NODE_ENV=production
-      - NUXT_HOST=0.0.0.0
-      - NUXT_PORT=3000    
+      - NODE_ENV=${NODE_ENV}
+      - NUXT_HOST=${NUXT_HOST}
+      - NUXT_PORT=${NUXT_PORT}
     depends_on:
       - backend
 
@@ -34,7 +36,7 @@ services:
       APP_KEYS: ${APP_KEYS}
       NODE_ENV: ${NODE_ENV}
     ports:
-      - "1337:1337"
+      - "${STRAPI_PORT}:${STRAPI_PORT}"
     volumes:
       - ./backend/config:/opt/app/config
       - ./backend/src:/opt/app/src
