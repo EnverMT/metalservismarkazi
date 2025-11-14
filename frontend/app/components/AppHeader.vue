@@ -1,5 +1,5 @@
 <template>
-  <header :class="['site-header', { 'site-header--scrolled': isScrolled }]">
+  <header :class="['site-header', { 'site-header--scrolled': isScrolled, 'site-header--sticky': !isHomePage }]">
     <div class="container-section site-header__inner">
       <a class="site-header__logo" type="button" href="/">MSM</a>
 
@@ -99,6 +99,8 @@ const { data: navItems } = await useAsyncData(
   }
 );
 
+const isHomePage = useRoute().path === "/";
+
 const isScrolled = ref(false);
 const mobileOpen = ref(false);
 
@@ -145,13 +147,13 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
   padding-block: 0.9rem;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
+  transition: all 0.5s;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.05));
 }
 
@@ -161,6 +163,10 @@ onBeforeUnmount(() => {
   border-bottom: 1px solid rgba(228, 228, 231, 0.75);
   padding-block: 0.6rem;
   backdrop-filter: blur(12px);
+}
+
+.site-header--sticky {
+  position: sticky;
 }
 
 .site-header__inner {
