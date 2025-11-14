@@ -1,6 +1,6 @@
 <template>
-  <section id="hero" class="hero">
-    <div class="hero__overlay" />
+  <section id="hero" class="hero" :style="{ backgroundImage: `url(${apiEndpoint}${page?.data?.backgroundImage?.url})` }">
+    <div class="hero__overlay"></div>
 
     <div class="container-section hero__content">
       <span class="hero__badge">{{ page?.data?.badge }}</span>
@@ -13,13 +13,13 @@
       </div>
     </div>
 
-    <div class="hero__gradient" />
+    <div class="hero__gradient"></div>
   </section>
 </template>
 
 <script setup lang="ts">
 import strapi from "@/utils/strapi";
-
+const apiEndpoint = useRuntimeConfig().public.apiEndpoint;
 const currentLocale = useState<string>("locale", () => "ru");
 
 const { data: page } = await useAsyncData(
@@ -38,7 +38,6 @@ const { data: page } = await useAsyncData(
   display: grid;
   place-items: center;
   padding-block: clamp(5rem, 12vw, 8rem);
-  background-image: url("https://www.uzbeksteel.uz/storage/images/1732174594.jpg");
   background-size: cover;
   background-position: center;
   color: #fff;

@@ -54,6 +54,18 @@
           "localized": true
         }
       }
+    },
+    "backgroundImage": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

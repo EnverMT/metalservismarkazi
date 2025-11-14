@@ -663,6 +663,12 @@ export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    backgroundImage: Schema.Attribute.Media<"images"> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     badge: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
