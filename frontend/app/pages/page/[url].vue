@@ -1,7 +1,7 @@
 <template>
   <div class="container-section">
     <h1 class="section-title">{{ page?.data?.title }}</h1>
-    <div v-html="DOMPurify.sanitize(page?.data?.content || "")"></div>
+    <div v-html="DOMPurify.sanitize(page?.data?.content || '')"></div>
   </div>
 </template>
 
