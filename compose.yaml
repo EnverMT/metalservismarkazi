@@ -37,7 +37,8 @@ services:
       NODE_ENV: ${NODE_ENV}
     ports:
       - "${STRAPI_PORT}:${STRAPI_PORT}"
-    # volumes:
+    volumes:
+      - backend-uploads:/opt/app/public
       # - ./backend/config:/opt/app/config
       # - ./backend/src:/opt/app/src
       # - ./backend/package.json:/opt/package.json
@@ -64,6 +65,8 @@ services:
 
 volumes:
   strapiDB-data:
+  backend-uploads:
+
 
 networks:
   strapi-network:
