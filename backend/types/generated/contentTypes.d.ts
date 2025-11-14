@@ -805,6 +805,50 @@ export interface ApiNavNav extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPagePage extends Struct.CollectionTypeSchema {
+  collectionName: "pages";
+  info: {
+    displayName: "Page";
+    pluralName: "pages";
+    singularName: "page";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        "plugin::ckeditor5.CKEditor",
+        {
+          preset: "defaultHtml";
+        }
+      > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::page.page">;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> & Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPartnerSectionPartnerSection extends Struct.SingleTypeSchema {
   collectionName: "partner_sections";
   info: {
@@ -977,6 +1021,7 @@ export interface ApiStructureCardStructureCard extends Struct.CollectionTypeSche
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<"oneToMany", "api::structure-card.structure-card">;
+    page: Schema.Attribute.Relation<"oneToOne", "api::page.page">;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -1442,6 +1487,7 @@ declare module "@strapi/strapi" {
       "api::machine-card.machine-card": ApiMachineCardMachineCard;
       "api::machine-section.machine-section": ApiMachineSectionMachineSection;
       "api::nav.nav": ApiNavNav;
+      "api::page.page": ApiPagePage;
       "api::partner-section.partner-section": ApiPartnerSectionPartnerSection;
       "api::partner.partner": ApiPartnerPartner;
       "api::service-section.service-section": ApiServiceSectionServiceSection;

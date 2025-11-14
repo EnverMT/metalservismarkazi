@@ -9,7 +9,7 @@ import type { MachineCard, MachineSection } from "~/src/types/Machine";
 import type { AdvantagesCard, AdvantagesSection } from "~/src/types/Advantages";
 import type { GallerySection } from "~/src/types/Gallery";
 import type { Partner, PartnerSection } from "~/src/types/Partner";
-
+import type { Page } from "~/src/types/Page";
 
 const apiBaseUrl = useRuntimeConfig().public.apiEndpoint;
 
@@ -86,17 +86,21 @@ class StrapiUtils {
   }
 
   public getPartnerSection(currentLocale: string): Promise<StrapiQueryOne<PartnerSection>> {
-    return $fetch<StrapiQueryOne<PartnerSection>>(
-      `${apiBaseUrl}/api/partner-section`,
-      this.queryParams(currentLocale)
-    );
+    return $fetch<StrapiQueryOne<PartnerSection>>(`${apiBaseUrl}/api/partner-section`, this.queryParams(currentLocale));
   }
 
   public getPartners(currentLocale: string): Promise<StrapiQueryMany<Partner>> {
-    return $fetch<StrapiQueryMany<Partner>>(
-      `${apiBaseUrl}/api/partners`,
-      this.queryParams(currentLocale)
-    );
+    return $fetch<StrapiQueryMany<Partner>>(`${apiBaseUrl}/api/partners`, this.queryParams(currentLocale));
+  }
+
+  public getPage(url: string, currentLocale: string): Promise<StrapiQueryOne<Page>> {
+    return $fetch<StrapiQueryOne<Page>>(`${apiBaseUrl}/api/pages/${url}`, this.queryParams(currentLocale));
+  }
+
+  public getPages(currentLocale: string): Promise<StrapiQueryMany<Page>> {
+    {
+      return $fetch<StrapiQueryMany<Page>>(`${apiBaseUrl}/api/pages`, this.queryParams(currentLocale));
+    }
   }
 
   private queryParams(locale: string): { query: { populate: string; locale: string } } {

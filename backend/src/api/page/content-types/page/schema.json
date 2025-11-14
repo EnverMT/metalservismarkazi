@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "structure_cards",
+  "collectionName": "pages",
   "info": {
-    "singularName": "structure-card",
-    "pluralName": "structure-cards",
-    "displayName": "StructureCard"
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page"
   },
   "options": {
     "draftAndPublish": true
@@ -23,18 +23,17 @@
         }
       }
     },
-    "description": {
-      "type": "string",
+    "content": {
+      "type": "customField",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
+      },
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
       }
-    },
-    "page": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page.page"
     }
   }
 }

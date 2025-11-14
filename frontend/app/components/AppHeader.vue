@@ -1,7 +1,7 @@
 <template>
   <header :class="['site-header', { 'site-header--scrolled': isScrolled }]">
     <div class="container-section site-header__inner">
-      <button class="site-header__logo" type="button" @click="scrollToSection('hero')">MSM</button>
+      <a class="site-header__logo" type="button" href="/">MSM</a>
 
       <nav class="site-header__nav">
         <button
@@ -145,7 +145,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .site-header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;

@@ -6,9 +6,11 @@
       <div class="structure__scroller" @mouseenter="paused = true" @mouseleave="paused = false">
         <div :class="['structure__track', 'marquee-track', { 'marquee-paused': paused }]">
           <article v-for="item in duplicatedItems" :key="item.uid" class="structure__card">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-            <span class="structure__indicator" />
+            <a :href="`/page/${item?.page?.documentId}`">
+              <h3>{{ item?.title }}</h3>
+              <p>{{ item?.description }}</p>
+              <span class="structure__indicator" />
+            </a>
           </article>
         </div>
       </div>
@@ -19,6 +21,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
+const apiEndpoint = useRuntimeConfig().public.apiEndpoint;
 const currentLocale = useState<string>("locale", () => "ru");
 
 const { data: structureSection } = await useAsyncData(
