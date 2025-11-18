@@ -3,7 +3,7 @@
     <div class="hero__overlay"></div>
 
     <div class="container-section hero__content">
-      <span class="hero__badge">{{ page?.data?.badge }}</span>
+      <!-- <span class="hero__badge">{{ page?.data?.badge }}</span> -->
       <h1 class="hero__title">{{ page?.data?.title }}</h1>
       <p class="hero__subtitle">{{ page?.data?.subtitle }}</p>
 
