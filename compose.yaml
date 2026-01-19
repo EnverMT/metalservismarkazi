@@ -30,7 +30,7 @@ services:
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       APP_KEYS: ${APP_KEYS}
     ports:
-      - "127.0.0.1:${STRAPI_PORT}:1337"
+      - "127.0.0.1:${STRAPI_PORT}:${STRAPI_PORT}"
     volumes:
       - backend-uploads:/opt/app/public
     networks:
